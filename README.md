@@ -19,8 +19,6 @@ API предоставляет возможность создавать, пол
 ## Запуск
 
 ```bash
-git clone github.com/merc11less-dev/restaurant_api.git
-cd restaurant-booking-api
 docker compose up --build
 ```
 
@@ -44,18 +42,6 @@ http://localhost:8000/docs
 
 ```http
 POST /bookings
-```
-
-Пример тела запроса:
-
-```json
-{
-  "name": "Анна Петрова",
-  "phone": "+79991234567",
-  "booking_date": "2026-09-15",
-  "booking_time": "19:00",
-  "guests": 4
-}
 ```
 
 #### Получение списка бронирований
