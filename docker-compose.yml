@@ -1,0 +1,19 @@
+services:
+  app:
+    build:
+      context: .
+      target: base
+    environment:
+      DATABASE_URL: sqlite+aiosqlite:////data/booking.db
+    ports:
+      - "8000:8000"
+    volumes:
+      - booking_data:/data
+    healthcheck:
+      test: ["CMD", "python", "-c", "from urllib.request import urlopen; urlopen('http://localhost:8000/health')"]
+      interval: 3s
+      timeout: 3s
+      retries: 10
+
+volumes:
+  booking_data:

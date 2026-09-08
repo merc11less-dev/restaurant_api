@@ -1,0 +1,16 @@
+from datetime import date, time
+from typing import Protocol
+
+from app.domain.booking import Booking, BookingDraft
+
+
+class BookingRepository(Protocol):
+    async def is_active_slot_taken(self, booking_date: date, booking_time: time) -> bool: ...
+
+    async def add(self, draft: BookingDraft) -> Booking: ...
+
+    async def list(self, booking_date: date | None) -> list[Booking]: ...
+
+    async def get(self, booking_id: int) -> Booking | None: ...
+
+    async def cancel(self, booking_id: int) -> Booking | None: ...
